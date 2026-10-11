@@ -1,0 +1,23 @@
+/* The flower opens by changing individual petal curves, not SVG scale. */
+.bloom-flight{position:fixed;z-index:5;pointer-events:none;color:var(--ink);transform-origin:0 0;will-change:transform}
+.bloom-flight>svg{display:block;width:100%;height:100%;stroke-width:1.05;overflow:visible}
+.flower-card .flower-illustration{transition:opacity .3s ease}
+.flower-card.is-bloom-source .flower-illustration{opacity:.12}
+.flower-card:hover .flower-illustration svg{transform:translateY(-2px)}
+.hover-bloom-layer{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;z-index:2}
+.hover-bloom-layer>svg{flex-shrink:0}
+.flower-card.is-hover-bloom .flower-illustration svg{transition:none}
+dialog.is-opening{background:transparent;border-color:transparent}
+dialog.is-opening .detail-layout{background:var(--paper);animation:bloom-paper 600ms cubic-bezier(.22,.75,.2,1) both}
+dialog.is-opening::backdrop{animation:bloom-backdrop 500ms ease-out both}
+dialog.is-opening .dialog-close{animation:bloom-copy 340ms 180ms both}
+dialog.is-opening .detail-text{animation:bloom-copy 650ms 420ms cubic-bezier(.22,.75,.2,1) both}
+dialog.is-opening .detail-art>p{animation:bloom-copy 350ms 1350ms both}
+@keyframes bloom-paper{from{opacity:0}to{opacity:1}}
+@keyframes bloom-backdrop{from{background:rgba(0,0,0,0);backdrop-filter:blur(0)}to{background:rgba(0,0,0,.32);backdrop-filter:blur(4px)}}
+@keyframes bloom-copy{from{opacity:0;transform:translateY(9px)}to{opacity:1;transform:translateY(0)}}
+@media(prefers-reduced-motion:reduce){
+ .bloom-flight{display:none}
+ dialog.is-opening .detail-layout,dialog.is-opening .detail-text,dialog.is-opening .detail-art>p,dialog.is-opening .dialog-close,dialog.is-opening::backdrop{animation:none!important}
+ .flower-card .flower-illustration{transition:none}
+}
