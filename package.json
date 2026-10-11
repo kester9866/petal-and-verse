@@ -1,0 +1,9 @@
+{
+  "name": "petal-and-verse",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A monochrome English/French floral atlas with Chinese notes",
+  "scripts": {
+    "test": "node tests/check-buds.cjs"
+  }
+}
